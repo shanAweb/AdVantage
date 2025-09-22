@@ -1,6 +1,6 @@
-import { Router } from 'express'
+import { Router, Request, Response } from 'express'
 import { crawlerController } from '@/controllers/crawlerController'
-import { authenticateToken } from '@/middleware/auth'
+import { authenticate } from '@/middleware/auth'
 import { validateRequest } from '@/middleware/validateRequest'
 import { body, param, query } from 'express-validator'
 
@@ -12,13 +12,13 @@ const router = Router()
  */
 router.post(
   '/test',
-  authenticateToken,
+  authenticate,
   [
     body('url').isURL().withMessage('Valid URL is required'),
     body('customSelectors').optional().isObject().withMessage('Custom selectors must be an object'),
   ],
   validateRequest,
-  (req, res) => crawlerController.testCrawler(req, res)
+  (req: Request, res: Response) => crawlerController.testCrawler(req, res)
 )
 
 /**
@@ -27,12 +27,12 @@ router.post(
  */
 router.get(
   '/suggestions',
-  authenticateToken,
+  authenticate,
   [
     query('url').isURL().withMessage('Valid URL is required'),
   ],
   validateRequest,
-  (req, res) => crawlerController.getSelectorSuggestions(req, res)
+  (req: Request, res: Response) => crawlerController.getSelectorSuggestions(req, res)
 )
 
 /**
@@ -41,12 +41,12 @@ router.get(
  */
 router.post(
   '/validate-selectors',
-  authenticateToken,
+  authenticate,
   [
     body('selectors').isObject().withMessage('Selectors configuration is required'),
   ],
   validateRequest,
-  (req, res) => crawlerController.validateSelectors(req, res)
+  (req: Request, res: Response) => crawlerController.validateSelectors(req, res)
 )
 
 /**
@@ -55,12 +55,12 @@ router.post(
  */
 router.get(
   '/metrics/:feedId',
-  authenticateToken,
+  authenticate,
   [
     param('feedId').isString().notEmpty().withMessage('Feed ID is required'),
   ],
   validateRequest,
-  (req, res) => crawlerController.getPerformanceMetrics(req, res)
+  (req: Request, res: Response) => crawlerController.getPerformanceMetrics(req, res)
 )
 
 /**
@@ -69,13 +69,13 @@ router.get(
  */
 router.post(
   '/test-multiple',
-  authenticateToken,
+  authenticate,
   [
     body('urls').isArray({ min: 1, max: 10 }).withMessage('URLs array is required (1-10 URLs)'),
     body('urls.*').isURL().withMessage('All URLs must be valid'),
   ],
   validateRequest,
-  (req, res) => crawlerController.testMultipleUrls(req, res)
+  (req: Request, res: Response) => crawlerController.testMultipleUrls(req, res)
 )
 
 /**
@@ -84,8 +84,22 @@ router.post(
  */
 router.get(
   '/status',
-  authenticateToken,
-  (req, res) => crawlerController.getCrawlerStatus(req, res)
+  authenticate,
+  (req: Request, res: Response) => crawlerController.getCrawlerStatus(req, res)
+)
+
+/**
+ * Test crawler without authentication (for development)
+ * POST /api/crawler/test-public
+ */
+router.post(
+  '/test-public',
+  [
+    body('url').isURL().withMessage('Valid URL is required'),
+    body('customSelectors').optional().isObject().withMessage('Custom selectors must be an object'),
+  ],
+  validateRequest,
+  (req: Request, res: Response) => crawlerController.testCrawler(req, res)
 )
 
 export default router

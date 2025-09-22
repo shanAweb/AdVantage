@@ -75,10 +75,10 @@ services:
       timeout: 10s
       retries: 3
 
-  # Frontend Next.js App
+  # Frontend React App
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend-react
       dockerfile: Dockerfile
     container_name: global_ads_frontend
     restart: unless-stopped
@@ -86,11 +86,11 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_API_URL=http://localhost:5000/api
+      - VITE_API_URL=http://localhost:5000/api
     volumes:
-      - ./frontend:/app
+      - ./frontend-react:/app
       - /app/node_modules
-      - /app/.next
+      - /app/dist
     depends_on:
       - backend
     networks:

@@ -7,8 +7,9 @@ import {
   updateFeed, 
   deleteFeed, 
   refreshFeed, 
+  stopFeedCrawl,
   getFeedProducts, 
-  downloadFeed,
+  downloadFeed, 
   getPublicFeed 
 } from '@/controllers/feedController'
 import { validateRequest } from '@/middleware/validateRequest'
@@ -91,6 +92,17 @@ router.post('/:id/refresh', [
   param('id').isString().withMessage('Feed ID is required'),
   validateRequest
 ], refreshFeed)
+
+/**
+ * @route   POST /api/feeds/:id/stop
+ * @desc    Stop feed crawling
+ * @access  Private
+ */
+router.post('/:id/stop', [
+  authenticate,
+  param('id').isString().withMessage('Feed ID is required'),
+  validateRequest
+], stopFeedCrawl)
 
 /**
  * @route   GET /api/feeds/:id/products

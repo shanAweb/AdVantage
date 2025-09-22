@@ -222,7 +222,7 @@ class ApiClient {
  * Create API client instance
  */
 const createApiClient = (): ApiClient => {
-  let baseURL: string = 'http://localhost:5000/api'
+  let baseURL: string = 'https://rankandrun.com/api'
 
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) {
     baseURL = import.meta.env.VITE_API_URL

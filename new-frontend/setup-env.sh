@@ -11,7 +11,7 @@ cat > .env.local << 'EOF'
 # For localhost development
 
 # API Configuration
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://rankandrun.com/api
 
 # Development Settings
 NODE_ENV=development
@@ -40,7 +40,7 @@ echo "✅ Created .env.local file"
 echo "✅ Environment variables configured for localhost development"
 echo ""
 echo "Your React frontend is now configured to:"
-echo "  - Use localhost backend at http://localhost:5000/api"
+echo "  - Use production backend at https://rankandrun.com/api"
 echo "  - Use dummy JWT tokens for authentication (no real backend needed)"
 echo "  - Work in development mode with mock data"
 echo ""

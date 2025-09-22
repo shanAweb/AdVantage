@@ -28,7 +28,7 @@ A complete React frontend for the Global Ads Launch & Optimization SaaS platform
 
 4. **Open your browser:**
    - Frontend: http://localhost:3002
-   - Backend: http://localhost:5000 (if running)
+   - Backend: https://rankandrun.com/api (production)
 
 ## 🔧 Configuration
 
@@ -38,7 +38,7 @@ The `.env.local` file contains:
 
 ```env
 # API Configuration
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=https://rankandrun.com/api
 
 # Development Settings
 NODE_ENV=development

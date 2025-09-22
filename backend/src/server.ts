@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 
 import { errorHandler } from '@/middleware/errorHandler'
 import { notFoundHandler } from '@/middleware/notFoundHandler'
+import { corsMiddleware } from '@/middleware/cors'
 import { logger } from '@/utils/logger'
 import { connectDatabase } from '@/config/database'
 import { connectRedis } from '@/config/redis'
@@ -25,6 +26,7 @@ import feedRoutes from '@/routes/feeds'
 import adRoutes from '@/routes/ads'
 import newCampaignRoutes from '@/routes/newCampaigns'
 import crawlerRoutes from '@/routes/crawler'
+import productRoutes from '@/routes/products'
 
 // Load environment variables
 dotenv.config()
@@ -50,25 +52,8 @@ class Server {
    * Initialize all middleware
    */
   private initializeMiddleware(): void {
-    // Security middleware
-    this.app.use(helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          styleSrc: ["'self'", "'unsafe-inline'"],
-          scriptSrc: ["'self'"],
-          imgSrc: ["'self'", "data:", "https:"],
-        },
-      },
-    }))
-
-    // CORS configuration
-    this.app.use(cors({
-      origin: process.env.FRONTEND_URL || ["http://localhost:3000", "http://localhost:3001"],
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    }))
+    // Use the custom CORS middleware
+    this.app.use(corsMiddleware);
 
     // Rate limiting
     const limiter = rateLimit({
@@ -83,6 +68,12 @@ class Server {
     // Body parsing middleware
     this.app.use(express.json({ limit: '10mb' }))
     this.app.use(express.urlencoded({ extended: true, limit: '10mb' }))
+
+    // Force JSON content type for all responses
+    this.app.use((req, res, next) => {
+      res.setHeader('Content-Type', 'application/json')
+      next()
+    })
 
     // Compression middleware
     this.app.use(compression())
@@ -128,6 +119,7 @@ class Server {
     this.app.use('/api/ads', adRoutes)
     this.app.use('/api/new-campaigns', newCampaignRoutes)
     this.app.use('/api/crawler', crawlerRoutes)
+    this.app.use('/api/products', productRoutes)
 
     // API documentation endpoint
     this.app.get('/api', (req, res) => {

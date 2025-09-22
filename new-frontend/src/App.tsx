@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ThemeProvider } from '@/components/theme-provider'
 import Layout from '@/components/Layout'
-import AutoLogin from '@/components/AutoLogin'
+// import AutoLogin from '@/components/AutoLogin' // Disabled for production
 import HomePage from '@/pages/HomePage'
 import SignInPage from '@/pages/SignInPage'
 import SignUpPage from '@/pages/SignUpPage'
@@ -23,7 +23,7 @@ function App() {
     <ThemeProvider defaultTheme="system" enableSystem>
       <Router>
         <AuthProvider>
-          <AutoLogin />
+          {/* <AutoLogin /> Disabled for production */}
           <div className="App">
             <Toaster
               position="top-right"

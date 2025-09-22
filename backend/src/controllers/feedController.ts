@@ -229,6 +229,45 @@ export const deleteFeed = async (req: Request, res: Response, next: NextFunction
 }
 
 /**
+ * Stop feed crawling
+ * @param req - Express request object
+ * @param res - Express response object
+ * @param next - Express next function
+ */
+export const stopFeedCrawl = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const userId = (req as any).user.id
+    const { id } = req.params
+
+    const feed = await prisma.feed.findFirst({
+      where: { id, userId }
+    })
+
+    if (!feed) {
+      throw new ApiError('Feed not found', 404)
+    }
+
+    // Update status to stopped
+    await prisma.feed.update({
+      where: { id },
+      data: {
+        lastCrawlStatus: 'stopped',
+        lastCrawlAt: new Date(),
+      },
+    })
+
+    logger.info('Feed crawl stopped', { feedId: id, userId })
+
+    res.json({
+      success: true,
+      message: 'Feed crawl stopped successfully'
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+/**
  * Refresh feed (trigger new crawl)
  * @param req - Express request object
  * @param res - Express response object
