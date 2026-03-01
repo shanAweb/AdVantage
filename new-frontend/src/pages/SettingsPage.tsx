@@ -1,313 +1,187 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Settings, User, Bell, Shield, CreditCard, Globe, Key } from 'lucide-react'
+import { User, Bell, Shield, CreditCard, Globe, Key } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import toast from 'react-hot-toast'
 
-/**
- * Settings page component
- * User account and application settings
- */
 export default function SettingsPage() {
   const { user } = useAuth()
-  const [loading, setLoading] = useState(false)
 
-  /**
-   * Handle settings actions
-   */
-  const handleEditProfile = () => {
-    toast.success('Opening profile editor...')
-    // TODO: Implement profile editing modal
-  }
+  const handleAction = (action: string) => { toast.success(`Opening ${action}...`) }
 
-  const handleManageNotifications = () => {
-    toast.success('Opening notification settings...')
-    // TODO: Implement notification management modal
-  }
-
-  const handleSecuritySettings = () => {
-    toast.success('Opening security settings...')
-    // TODO: Implement security settings modal
-  }
-
-  const handleManageBilling = () => {
-    toast.success('Opening billing management...')
-    // TODO: Implement billing management modal
-  }
-
-  const handleManageIntegrations = () => {
-    toast.success('Opening integrations management...')
-    // TODO: Implement integrations management modal
-  }
-
-  const handleManageApiKeys = () => {
-    toast.success('Opening API keys management...')
-    // TODO: Implement API keys management modal
-  }
-
-  const handleChangePassword = () => {
-    toast.success('Opening password change form...')
-    // TODO: Implement password change modal
-  }
-
-  const handleUpdateProfile = () => {
-    toast.success('Opening profile update form...')
-    // TODO: Implement profile update modal
-  }
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Manage your account and application preferences
-          </p>
-        </div>
+      <div>
+        <h1 className="text-2xl font-bold text-stone-900">Settings</h1>
+        <p className="text-stone-500 text-sm">Manage your account and application preferences</p>
       </div>
 
-      {/* Settings Categories */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {/* Account Settings */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <User className="h-6 w-6 text-blue-600" />
-              <CardTitle>Account Settings</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-teal-50 flex items-center justify-center"><User className="h-5 w-5 text-teal-700" /></div>
+              <CardTitle className="text-base">Account Settings</CardTitle>
             </div>
-            <CardDescription>
-              Manage your personal information and account details
-            </CardDescription>
+            <CardDescription>Manage your personal information and account details</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              <div className="text-sm">
-                <span className="font-medium">Email:</span> {user?.email || 'Not available'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Name:</span> {user?.firstName && user?.lastName ? `${user.firstName} ${user.lastName}` : 'Not set'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Plan:</span> {user?.subscription?.plan || 'Free'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Member since:</span> {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown'}
-              </div>
+            <div className="space-y-2 text-sm">
+              <div><span className="font-medium text-stone-600">Email:</span> <span className="text-stone-500">{user?.email || 'Not available'}</span></div>
+              <div><span className="font-medium text-stone-600">Name:</span> <span className="text-stone-500">{user?.firstName && user?.lastName ? `${user.firstName} ${user.lastName}` : 'Not set'}</span></div>
+              <div><span className="font-medium text-stone-600">Plan:</span> <span className="text-stone-500">{user?.subscription?.plan || 'Free'}</span></div>
+              <div><span className="font-medium text-stone-600">Member since:</span> <span className="text-stone-500">{user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown'}</span></div>
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={handleEditProfile}>
-              Edit Profile
-            </Button>
+            <Button className="w-full mt-4 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('profile editor')}>Edit Profile</Button>
           </CardContent>
         </Card>
 
-        {/* Notifications */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <Bell className="h-6 w-6 text-green-600" />
-              <CardTitle>Notifications</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-emerald-50 flex items-center justify-center"><Bell className="h-5 w-5 text-emerald-700" /></div>
+              <CardTitle className="text-base">Notifications</CardTitle>
             </div>
-            <CardDescription>
-              Configure your notification preferences
-            </CardDescription>
+            <CardDescription>Configure your notification preferences</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Email notifications</span>
-                <Badge variant={user?.emailNotifications !== false ? 'default' : 'secondary'}>
-                  {user?.emailNotifications !== false ? 'Enabled' : 'Disabled'}
-                </Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Campaign alerts</span>
-                <Badge variant={user?.campaignAlerts !== false ? 'default' : 'secondary'}>
-                  {user?.campaignAlerts !== false ? 'Enabled' : 'Disabled'}
-                </Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Weekly reports</span>
-                <Badge variant={user?.weeklyReports === true ? 'default' : 'secondary'}>
-                  {user?.weeklyReports === true ? 'Enabled' : 'Disabled'}
-                </Badge>
-              </div>
+              {[
+                { label: 'Email notifications', enabled: user?.emailNotifications !== false },
+                { label: 'Campaign alerts', enabled: user?.campaignAlerts !== false },
+                { label: 'Weekly reports', enabled: user?.weeklyReports === true },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center justify-between text-sm">
+                  <span className="text-stone-600">{item.label}</span>
+                  <Badge className={item.enabled ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-stone-100 text-stone-500 border-stone-200'}>
+                    {item.enabled ? 'Enabled' : 'Disabled'}
+                  </Badge>
+                </div>
+              ))}
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={handleManageNotifications}>
-              Manage Notifications
-            </Button>
+            <Button className="w-full mt-4 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('notification settings')}>Manage Notifications</Button>
           </CardContent>
         </Card>
 
-        {/* Security */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <Shield className="h-6 w-6 text-red-600" />
-              <CardTitle>Security</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-red-50 flex items-center justify-center"><Shield className="h-5 w-5 text-red-600" /></div>
+              <CardTitle className="text-base">Security</CardTitle>
             </div>
-            <CardDescription>
-              Manage your account security settings
-            </CardDescription>
+            <CardDescription>Manage your account security settings</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Two-factor auth</span>
-                <Badge variant={user?.twoFactorEnabled === true ? 'default' : 'secondary'}>
-                  {user?.twoFactorEnabled === true ? 'Enabled' : 'Disabled'}
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-stone-600">Two-factor auth</span>
+                <Badge className={user?.twoFactorEnabled ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-stone-100 text-stone-500 border-stone-200'}>
+                  {user?.twoFactorEnabled ? 'Enabled' : 'Disabled'}
                 </Badge>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Password</span>
-                <Badge variant="default">Strong</Badge>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-stone-600">Password</span>
+                <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200">Strong</Badge>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Last login</span>
-                <span className="text-xs text-gray-500">
-                  {user?.lastLoginAt ? new Date(user.lastLoginAt).toLocaleString() : 'Unknown'}
-                </span>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-stone-600">Last login</span>
+                <span className="text-xs text-stone-400">{user?.lastLoginAt ? new Date(user.lastLoginAt).toLocaleString() : 'Unknown'}</span>
               </div>
             </div>
-            <div className="flex space-x-2 mt-4">
-              <Button className="flex-1" variant="outline" onClick={handleSecuritySettings}>
-                Security Settings
-              </Button>
-              <Button className="flex-1" variant="outline" onClick={handleChangePassword}>
-                Change Password
-              </Button>
+            <div className="flex gap-2 mt-4">
+              <Button className="flex-1 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('security settings')}>Security</Button>
+              <Button className="flex-1 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('password change form')}>Password</Button>
             </div>
           </CardContent>
         </Card>
 
-        {/* Billing */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <CreditCard className="h-6 w-6 text-purple-600" />
-              <CardTitle>Billing & Plans</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-amber-50 flex items-center justify-center"><CreditCard className="h-5 w-5 text-amber-700" /></div>
+              <CardTitle className="text-base">Billing & Plans</CardTitle>
             </div>
-            <CardDescription>
-              Manage your subscription and billing information
-            </CardDescription>
+            <CardDescription>Manage your subscription and billing information</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              <div className="text-sm">
-                <span className="font-medium">Current plan:</span> {user?.subscription?.plan || 'Free'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Next billing:</span> {user?.subscription?.nextBillingDate ? new Date(user.subscription.nextBillingDate).toLocaleDateString() : 'N/A'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Amount:</span> ${user?.subscription?.amount || '0'}/month
-              </div>
+            <div className="space-y-2 text-sm">
+              <div><span className="font-medium text-stone-600">Current plan:</span> <span className="text-stone-500">{user?.subscription?.plan || 'Free'}</span></div>
+              <div><span className="font-medium text-stone-600">Next billing:</span> <span className="text-stone-500">{user?.subscription?.nextBillingDate ? new Date(user.subscription.nextBillingDate).toLocaleDateString() : 'N/A'}</span></div>
+              <div><span className="font-medium text-stone-600">Amount:</span> <span className="text-stone-500">${user?.subscription?.amount || '0'}/month</span></div>
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={handleManageBilling}>
-              Manage Billing
-            </Button>
+            <Button className="w-full mt-4 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('billing management')}>Manage Billing</Button>
           </CardContent>
         </Card>
 
-        {/* Integrations */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <Globe className="h-6 w-6 text-orange-600" />
-              <CardTitle>Integrations</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-orange-50 flex items-center justify-center"><Globe className="h-5 w-5 text-orange-600" /></div>
+              <CardTitle className="text-base">Integrations</CardTitle>
             </div>
-            <CardDescription>
-              Connect with external services and platforms
-            </CardDescription>
+            <CardDescription>Connect with external services and platforms</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Google Ads</span>
-                <Badge variant={user?.integrations?.googleAds === true ? 'default' : 'secondary'}>
-                  {user?.integrations?.googleAds === true ? 'Connected' : 'Not Connected'}
-                </Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Microsoft Ads</span>
-                <Badge variant={user?.integrations?.microsoftAds === true ? 'default' : 'secondary'}>
-                  {user?.integrations?.microsoftAds === true ? 'Connected' : 'Not Connected'}
-                </Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Analytics</span>
-                <Badge variant={user?.integrations?.analytics === true ? 'default' : 'secondary'}>
-                  {user?.integrations?.analytics === true ? 'Connected' : 'Not Connected'}
-                </Badge>
-              </div>
+              {[
+                { label: 'Google Ads', connected: user?.integrations?.googleAds === true },
+                { label: 'Microsoft Ads', connected: user?.integrations?.microsoftAds === true },
+                { label: 'Analytics', connected: user?.integrations?.analytics === true },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center justify-between text-sm">
+                  <span className="text-stone-600">{item.label}</span>
+                  <Badge className={item.connected ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-stone-100 text-stone-500 border-stone-200'}>
+                    {item.connected ? 'Connected' : 'Not Connected'}
+                  </Badge>
+                </div>
+              ))}
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={handleManageIntegrations}>
-              Manage Integrations
-            </Button>
+            <Button className="w-full mt-4 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('integrations management')}>Manage Integrations</Button>
           </CardContent>
         </Card>
 
-        {/* API Keys */}
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="border-stone-200 card-hover">
           <CardHeader>
             <div className="flex items-center space-x-3">
-              <Key className="h-6 w-6 text-gray-600" />
-              <CardTitle>API Keys</CardTitle>
+              <div className="h-9 w-9 rounded-lg bg-stone-100 flex items-center justify-center"><Key className="h-5 w-5 text-stone-600" /></div>
+              <CardTitle className="text-base">API Keys</CardTitle>
             </div>
-            <CardDescription>
-              Manage your API keys and access tokens
-            </CardDescription>
+            <CardDescription>Manage your API keys and access tokens</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              <div className="text-sm">
-                <span className="font-medium">Active keys:</span> {user?.apiKeys?.activeCount || 0}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Last used:</span> {user?.apiKeys?.lastUsed ? new Date(user.apiKeys.lastUsed).toLocaleDateString() : 'Never'}
-              </div>
-              <div className="text-sm">
-                <span className="font-medium">Rate limit:</span> {user?.apiKeys?.rateLimit || '1000'}/hour
-              </div>
+            <div className="space-y-2 text-sm">
+              <div><span className="font-medium text-stone-600">Active keys:</span> <span className="text-stone-500">{user?.apiKeys?.activeCount || 0}</span></div>
+              <div><span className="font-medium text-stone-600">Last used:</span> <span className="text-stone-500">{user?.apiKeys?.lastUsed ? new Date(user.apiKeys.lastUsed).toLocaleDateString() : 'Never'}</span></div>
+              <div><span className="font-medium text-stone-600">Rate limit:</span> <span className="text-stone-500">{user?.apiKeys?.rateLimit || '1000'}/hour</span></div>
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={handleManageApiKeys}>
-              Manage API Keys
-            </Button>
+            <Button className="w-full mt-4 border-stone-300 text-stone-700 hover:bg-stone-100" variant="outline" onClick={() => handleAction('API keys management')}>Manage API Keys</Button>
           </CardContent>
         </Card>
       </div>
 
-      {/* Quick Actions */}
-      <Card>
+      <Card className="border-stone-200">
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
-          <CardDescription>
-            Common settings and account management tasks
-          </CardDescription>
+          <CardTitle className="text-lg">Quick Actions</CardTitle>
+          <CardDescription>Common settings and account management tasks</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Button variant="outline" className="h-20 flex-col" onClick={handleUpdateProfile}>
-              <User className="h-6 w-6 mb-2" />
-              Update Profile
-            </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={handleChangePassword}>
-              <Shield className="h-6 w-6 mb-2" />
-              Change Password
-            </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={handleManageNotifications}>
-              <Bell className="h-6 w-6 mb-2" />
-              Notification Settings
-            </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={handleManageBilling}>
-              <CreditCard className="h-6 w-6 mb-2" />
-              View Invoices
-            </Button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: User, label: 'Update Profile', color: 'text-teal-700' },
+              { icon: Shield, label: 'Change Password', color: 'text-red-600' },
+              { icon: Bell, label: 'Notification Settings', color: 'text-emerald-700' },
+              { icon: CreditCard, label: 'View Invoices', color: 'text-amber-700' },
+            ].map((item, i) => (
+              <Button key={i} variant="outline" className="h-20 flex-col border-stone-200 text-stone-600 hover:bg-stone-50 hover:border-stone-300 transition-all duration-200" onClick={() => handleAction(item.label)}>
+                <item.icon className={`h-5 w-5 mb-2 ${item.color}`} />
+                <span className="text-xs">{item.label}</span>
+              </Button>
+            ))}
           </div>
         </CardContent>
       </Card>
     </div>
   )
 }
-

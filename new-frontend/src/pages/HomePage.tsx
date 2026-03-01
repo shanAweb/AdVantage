@@ -2,44 +2,44 @@ import { Link } from 'react-router-dom'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
-import { ArrowRight, BarChart3, Globe, Target, Zap, Shield, Users, Search, Rss, CheckCircle, Star, Quote, Rocket, TrendingUp } from 'lucide-react'
+import { ArrowRight, BarChart3, Globe, Target, Zap, Shield, Users, Search, Rss, CheckCircle, Star, TrendingUp, MousePointer, Eye, Layers, Activity } from 'lucide-react'
 
 export default function HomePage() {
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur-sm dark:bg-gray-900/95 sticky top-0 z-50">
+    <div className="min-h-screen bg-stone-50">
+      {/* ── Header ── */}
+      <header className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">GA</span>
+              <div className="h-9 w-9 rounded-lg bg-teal-700 flex items-center justify-center">
+                <span className="text-white font-bold text-sm tracking-tight">Av</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Global Ads Launch</span>
+              <span className="text-xl font-bold text-stone-900 tracking-tight">AdVantage</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#tools" className="text-sm font-medium hover:text-blue-600 transition-colors">
-                Free Tools
+              <a href="#tools" className="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors duration-200">
+                Tools
               </a>
-              <a href="#features" className="text-sm font-medium hover:text-blue-600 transition-colors">
+              <a href="#features" className="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors duration-200">
                 Features
               </a>
-              <a href="#pricing" className="text-sm font-medium hover:text-blue-600 transition-colors">
+              <a href="#pricing" className="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors duration-200">
                 Pricing
               </a>
-              <a href="#testimonials" className="text-sm font-medium hover:text-blue-600 transition-colors">
+              <a href="#testimonials" className="text-sm font-medium text-stone-600 hover:text-teal-700 transition-colors duration-200">
                 Reviews
               </a>
             </nav>
             <div className="flex items-center space-x-3">
               <Link to="/signin">
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" className="text-stone-700 hover:text-teal-700">
                   Sign In
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <Button size="sm" className="bg-teal-700 hover:bg-teal-800 text-white transition-all duration-200">
                   Get Started Free
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -49,731 +49,630 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24 px-4">
-        <div className="container mx-auto text-center">
-          {/* Logo Section */}
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <div className="h-24 w-24 rounded-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 flex items-center justify-center shadow-2xl">
-                <Rocket className="h-12 w-12 text-white" />
-              </div>
-              <div className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
-                <TrendingUp className="h-4 w-4 text-white" />
-              </div>
-            </div>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              SEO & AI Visibility Control Center
-            </span>
-            <br />
-            <span className="text-gray-900 dark:text-white">for Agencies</span>
-          </h1>
-          <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Impress your customers with proactive alerts and actionable reports, generated at the intersection of 
-            Search Console, GA4, AI overviews rankings and site content updates.
-          </p>
-          
-          {/* Live Stats Counter */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-12 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">2,847</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Websites Monitored</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">156K+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Issues Fixed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">98.7%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">24/7</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Monitoring</div>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link to="/signup">
-              <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                Start 14-day Free Trial
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 font-semibold">
-              Book Demo with Team
-            </Button>
-          </div>
-          
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500 dark:text-gray-400">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              <span>No credit card required</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              <span>14-day free trial</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              <span>Cancel anytime</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Hero Section (Asymmetric Split) ── */}
+      <section className="relative overflow-hidden">
+        {/* Decorative background shapes */}
+        <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-3xl opacity-60 -z-10" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50 rounded-full blur-3xl opacity-60 -z-10" />
 
-      {/* Value Proposition Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why Agencies Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Global Ads Launch</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Stop losing clients to competitors. Our platform gives you the edge you need to deliver exceptional results.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center p-6">
-              <div className="h-16 w-16 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">40% More Revenue</h3>
-              <p className="text-gray-600 dark:text-gray-400">Agencies using our platform report 40% higher client retention and revenue growth</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="h-16 w-16 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">10x Faster Reports</h3>
-              <p className="text-gray-600 dark:text-gray-400">Generate professional client reports in minutes, not hours. Automate everything.</p>
-            </div>
-            <div className="text-center p-6">
-              <div className="h-16 w-16 rounded-full bg-gradient-to-r from-purple-400 to-purple-500 flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Proactive Alerts</h3>
-              <p className="text-gray-600 dark:text-gray-400">Never miss critical issues. Get notified before your clients do.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="container mx-auto px-4 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Left: Text Content (7 cols) */}
+            <div className="lg:col-span-7 animate-fade-in-up">
+              <Badge className="mb-6 bg-teal-50 text-teal-700 border-teal-200 hover:bg-teal-100 px-4 py-1.5 text-sm font-medium">
+                Trusted by 2,000+ agencies worldwide
+              </Badge>
 
-      {/* Free Tools Section */}
-      <section id="tools" className="py-20 px-4 bg-white dark:bg-gray-900">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Try Our Tools Right Now</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              No signup required. Experience the power of our platform instantly and see why agencies love us.
-            </p>
-          </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
+                <span className="text-stone-900">The SEO & Ad Visibility</span>
+                <br />
+                <span className="text-gradient-primary">Control Center</span>
+                <br />
+                <span className="text-stone-900">for Agencies</span>
+              </h1>
 
-          {/* Services Grid - Clean Column Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Website Crawler */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Globe className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Website Crawler</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Crawl any website for technical issues and SEO insights with comprehensive analysis
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Detect broken links</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Check PageSpeed</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>SEO issues</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Content analysis</span>
-                  </div>
-                </div>
-                <Link to="/dashboard/feeds">
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    Start Crawling
+              <p className="text-lg lg:text-xl text-stone-500 mb-8 max-w-xl leading-relaxed">
+                Proactive alerts and actionable reports at the intersection of
+                Search Console, GA4, AI overview rankings, and site content updates.
+                Impress your clients before they even ask.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <Link to="/signup">
+                  <Button size="lg" className="text-base px-7 py-5 bg-teal-700 hover:bg-teal-800 text-white shadow-lg shadow-teal-700/20 transition-all duration-300 hover:shadow-xl hover:shadow-teal-700/30">
+                    Start 14-Day Free Trial
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
+                <Button variant="outline" size="lg" className="text-base px-7 py-5 border-stone-300 text-stone-700 hover:bg-stone-100 hover:border-stone-400 transition-all duration-300">
+                  Book a Demo
+                </Button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center gap-6 text-stone-500 text-sm">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-teal-600" />
+                  <span>No credit card required</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-teal-600" />
+                  <span>14-day free trial</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-teal-600" />
+                  <span>Cancel anytime</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Dashboard Preview (5 cols) */}
+            <div className="lg:col-span-5 animate-fade-in-right delay-300">
+              <div className="relative">
+                {/* Floating accent card - top */}
+                <div className="absolute -top-4 -left-4 z-10 bg-white rounded-xl shadow-xl p-4 animate-float border border-stone-100">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-teal-50 flex items-center justify-center">
+                      <TrendingUp className="h-5 w-5 text-teal-700" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-500">Organic Traffic</p>
+                      <p className="text-lg font-bold text-stone-900">+47.2%</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main dashboard mockup */}
+                <div className="bg-white rounded-2xl shadow-2xl border border-stone-200 p-6 space-y-5">
+                  {/* Mini header */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold text-stone-900 text-sm">Campaign Performance</h3>
+                      <p className="text-xs text-stone-400">Last 30 days</p>
+                    </div>
+                    <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 text-xs">Live</Badge>
+                  </div>
+
+                  {/* Stats row */}
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="bg-stone-50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-stone-900">2.4M</p>
+                      <p className="text-[10px] text-stone-500 uppercase tracking-wider">Impressions</p>
+                    </div>
+                    <div className="bg-stone-50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-teal-700">4.8%</p>
+                      <p className="text-[10px] text-stone-500 uppercase tracking-wider">CTR</p>
+                    </div>
+                    <div className="bg-stone-50 rounded-lg p-3 text-center">
+                      <p className="text-lg font-bold text-amber-600">6.2x</p>
+                      <p className="text-[10px] text-stone-500 uppercase tracking-wider">ROAS</p>
+                    </div>
+                  </div>
+
+                  {/* Mini chart bars */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-stone-400 w-16">Google</span>
+                      <div className="flex-1 bg-stone-100 rounded-full h-2.5">
+                        <div className="bg-teal-600 h-2.5 rounded-full" style={{ width: '78%' }} />
+                      </div>
+                      <span className="text-xs font-medium text-stone-600 w-10 text-right">78%</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-stone-400 w-16">Microsoft</span>
+                      <div className="flex-1 bg-stone-100 rounded-full h-2.5">
+                        <div className="bg-amber-500 h-2.5 rounded-full" style={{ width: '54%' }} />
+                      </div>
+                      <span className="text-xs font-medium text-stone-600 w-10 text-right">54%</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-stone-400 w-16">YouTube</span>
+                      <div className="flex-1 bg-stone-100 rounded-full h-2.5">
+                        <div className="bg-emerald-500 h-2.5 rounded-full" style={{ width: '41%' }} />
+                      </div>
+                      <span className="text-xs font-medium text-stone-600 w-10 text-right">41%</span>
+                    </div>
+                  </div>
+
+                  {/* Alert row */}
+                  <div className="flex items-center gap-3 bg-amber-50 rounded-lg p-3 border border-amber-100">
+                    <Activity className="h-4 w-4 text-amber-600 flex-shrink-0" />
+                    <p className="text-xs text-amber-800">3 campaigns need attention -- CTR below threshold</p>
+                  </div>
+                </div>
+
+                {/* Floating accent card - bottom right */}
+                <div className="absolute -bottom-4 -right-4 z-10 bg-white rounded-xl shadow-xl p-4 animate-float delay-500 border border-stone-100">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-amber-50 flex items-center justify-center">
+                      <Target className="h-5 w-5 text-amber-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-stone-500">Conversions</p>
+                      <p className="text-lg font-bold text-stone-900">1,284</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Social Proof Bar ── */}
+      <section className="py-10 border-y border-stone-200 bg-white">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-sm text-stone-400 mb-6 uppercase tracking-wider font-medium">Trusted by leading agencies</p>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
+            {['360 Agency', 'Mediboost', 'Bambuu', 'Beacon Digital', 'LightCyde', 'Strativ Group'].map((name, i) => (
+              <span key={i} className="text-lg font-semibold text-stone-300 hover:text-stone-500 transition-colors duration-300 cursor-default">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Value Proposition Stats ── */}
+      <section className="py-16 px-4 bg-stone-900 relative overflow-hidden">
+        {/* Decorative */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-900/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-900/20 rounded-full blur-3xl" />
+
+        <div className="container mx-auto relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div className="animate-fade-in-up">
+              <p className="text-4xl lg:text-5xl font-bold text-white mb-2">40%</p>
+              <p className="text-stone-400 text-sm">Higher client retention for agencies using our platform</p>
+            </div>
+            <div className="animate-fade-in-up delay-200">
+              <p className="text-4xl lg:text-5xl font-bold text-teal-400 mb-2">10x</p>
+              <p className="text-stone-400 text-sm">Faster report generation compared to manual workflows</p>
+            </div>
+            <div className="animate-fade-in-up delay-400">
+              <p className="text-4xl lg:text-5xl font-bold text-amber-400 mb-2">156K+</p>
+              <p className="text-stone-400 text-sm">SEO issues identified and fixed across client sites</p>
+            </div>
+            <div className="animate-fade-in-up delay-600">
+              <p className="text-4xl lg:text-5xl font-bold text-white mb-2">24/7</p>
+              <p className="text-stone-400 text-sm">Continuous monitoring with proactive alert system</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Tools Section (Bento Grid) ── */}
+      <section id="tools" className="py-20 px-4 bg-stone-50">
+        <div className="container mx-auto">
+          <div className="max-w-2xl mb-14">
+            <p className="text-sm font-semibold text-teal-700 uppercase tracking-wider mb-3">Platform Tools</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 tracking-tight">
+              Everything you need. Nothing you don't.
+            </h2>
+            <p className="text-lg text-stone-500">
+              No signup required for a quick test. See why agencies love working with these tools.
+            </p>
+          </div>
+
+          {/* Bento Grid - mixed sizes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {/* Large Card - Website Crawler */}
+            <div className="md:col-span-2 bg-white rounded-2xl p-8 border border-stone-200 card-hover group">
+              <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="h-12 w-12 rounded-xl bg-teal-50 flex items-center justify-center mb-5 group-hover:bg-teal-100 transition-colors duration-300">
+                    <Globe className="h-6 w-6 text-teal-700" />
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-900 mb-3">Website Crawler</h3>
+                  <p className="text-stone-500 mb-5 leading-relaxed">
+                    Deep-crawl any website for technical issues, broken links, PageSpeed bottlenecks, and SEO gaps. Get a full health report in minutes.
+                  </p>
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    {['Broken link detection', 'PageSpeed analysis', 'SEO audit', 'Content analysis'].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 text-sm text-stone-600">
+                        <CheckCircle className="h-4 w-4 text-teal-600 flex-shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/dashboard/feeds">
+                    <Button className="bg-teal-700 hover:bg-teal-800 text-white transition-all duration-200">
+                      Start Crawling
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+                <div className="lg:w-64 bg-stone-50 rounded-xl p-5 space-y-3">
+                  <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Sample Output</p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm"><span className="text-stone-600">Pages Scanned</span><span className="font-semibold text-stone-900">1,247</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-stone-600">Issues Found</span><span className="font-semibold text-amber-600">23</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-stone-600">SEO Score</span><span className="font-semibold text-teal-700">87/100</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-stone-600">Load Time</span><span className="font-semibold text-stone-900">1.2s</span></div>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* SEO Analysis */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Search className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">SEO Analysis</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Comprehensive SEO audit and keyword analysis with competitor insights
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Keyword research</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Competitor analysis</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Rank tracking</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Content optimization</span>
-                  </div>
-                </div>
-                <Link to="/dashboard/seo">
-                  <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    Analyze SEO
-                  </Button>
-                </Link>
+            <div className="bg-white rounded-2xl p-8 border border-stone-200 card-hover group">
+              <div className="h-12 w-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors duration-300">
+                <Search className="h-6 w-6 text-emerald-700" />
               </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">SEO Analysis</h3>
+              <p className="text-stone-500 mb-5 leading-relaxed">
+                Keyword research, competitor analysis, rank tracking, and content optimization in one view.
+              </p>
+              <Link to="/dashboard/seo">
+                <Button variant="outline" className="border-stone-300 text-stone-700 hover:bg-stone-100 transition-all duration-200">
+                  Analyze SEO
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
 
             {/* Ad Campaign Creator */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Target className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Ad Campaign Creator</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Create and launch ad campaigns instantly with AI-powered optimization
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>AI-powered targeting</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Multi-platform support</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Budget optimization</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Real-time monitoring</span>
-                  </div>
-                </div>
-                <Link to="/dashboard/new-campaigns">
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    Create Campaign
-                  </Button>
-                </Link>
+            <div className="bg-white rounded-2xl p-8 border border-stone-200 card-hover group">
+              <div className="h-12 w-12 rounded-xl bg-amber-50 flex items-center justify-center mb-5 group-hover:bg-amber-100 transition-colors duration-300">
+                <Target className="h-6 w-6 text-amber-700" />
               </div>
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Campaign Creator</h3>
+              <p className="text-stone-500 mb-5 leading-relaxed">
+                Build and launch multi-platform ad campaigns with AI-powered targeting and budget optimization.
+              </p>
+              <Link to="/dashboard/new-campaigns">
+                <Button variant="outline" className="border-stone-300 text-stone-700 hover:bg-stone-100 transition-all duration-200">
+                  Create Campaign
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
 
             {/* Analytics Dashboard */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <BarChart3 className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Analytics Dashboard</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Real-time performance tracking with detailed insights and reports
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Real-time metrics</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Custom reports</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>ROI tracking</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Export data</span>
-                  </div>
-                </div>
-                <Link to="/dashboard">
-                  <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    View Analytics
-                  </Button>
-                </Link>
+            <div className="bg-white rounded-2xl p-8 border border-stone-200 card-hover group">
+              <div className="h-12 w-12 rounded-xl bg-stone-100 flex items-center justify-center mb-5 group-hover:bg-stone-200 transition-colors duration-300">
+                <BarChart3 className="h-6 w-6 text-stone-700" />
               </div>
-            </div>
-
-            {/* Feed Manager */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Rss className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Feed Manager</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  Manage RSS feeds and content sources with automated crawling
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>RSS feed management</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Automated crawling</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Content filtering</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Data export</span>
-                  </div>
-                </div>
-                <Link to="/dashboard/feeds">
-                  <Button className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    Manage Feeds
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Auto Optimization */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
-              <div className="text-center">
-                <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Zap className="h-10 w-10 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Auto Optimization</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  AI-powered campaign optimization for maximum ROI and performance
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>AI optimization</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Performance tuning</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>ROI maximization</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Smart bidding</span>
-                  </div>
-                </div>
-                <Link to="/dashboard/seo">
-                  <Button className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    Optimize Now
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Everything you need to launch and optimize global advertising campaigns
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Globe className="h-12 w-12 text-blue-600 mb-4" />
-                <CardTitle>Multi-Platform Support</CardTitle>
-                <CardDescription>
-                  Google Ads, Microsoft Ads, and YouTube Ads integration with unified dashboard
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Target className="h-12 w-12 text-green-600 mb-4" />
-                <CardTitle>Smart Campaign Launch</CardTitle>
-                <CardDescription>
-                  Automated campaign setup with AI-powered keyword generation and budget optimization
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <BarChart3 className="h-12 w-12 text-purple-600 mb-4" />
-                <CardTitle>Advanced Analytics</CardTitle>
-                <CardDescription>
-                  Real-time reporting with ROAS tracking, conversion analysis, and performance insights
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Zap className="h-12 w-12 text-yellow-600 mb-4" />
-                <CardTitle>Auto Optimization</CardTitle>
-                <CardDescription>
-                  Intelligent rules for pausing poor performers, scaling winners, and managing negative keywords
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Shield className="h-12 w-12 text-red-600 mb-4" />
-                <CardTitle>Enterprise Security</CardTitle>
-                <CardDescription>
-                  OAuth integration, role-based access, and secure API connections with audit trails
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Users className="h-12 w-12 text-indigo-600 mb-4" />
-                <CardTitle>B2B Audience Wizard</CardTitle>
-                <CardDescription>
-                  Custom audience targeting with tailored campaign strategies for B2B markets
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 px-4 bg-white dark:bg-gray-900">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Join 1000+ Teams Monitoring Websites</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              See what our customers are saying about their success with Global Ads Launch
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent>
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-blue-600 mb-4" />
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  "Now, we monitor all important metrics in one dashboard and prioritize the SEO fixes using only one tool which saves really a lot of time for analyzing and testing new hypotheses. One of our favorite features is email alerts."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                    <span className="text-blue-600 font-bold text-sm">HK</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Herman Krabbendam</div>
-                    <div className="text-sm text-gray-500">Owner of Vuurwerk agency</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent>
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-green-600 mb-4" />
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  "Our SEO workflow has changed a lot in the last few years. We've tried a lot of tools to optimize our work, but none of them help us with the technical SEO, which provides the foundation for all of the website's content to rank well."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
-                    <span className="text-green-600 font-bold text-sm">LG</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Lorenz Graf</div>
-                    <div className="text-sm text-gray-500">Head of SEO at LightCyde Agency</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent>
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <Quote className="h-8 w-8 text-purple-600 mb-4" />
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  "When I begin discovery for a new client, the first thing I do is run Global Ads Launch on their website and connect Google Search Console and Google Analytics accounts to get a better picture of the baseline we are starting from."
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
-                    <span className="text-purple-600 font-bold text-sm">SW</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold">Sandra West</div>
-                    <div className="text-sm text-gray-500">CEO of Bellastrega</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-500 dark:text-gray-400 mb-8">Trusted by agencies worldwide</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-2xl font-bold text-gray-400">360 Agency</div>
-              <div className="text-2xl font-bold text-gray-400">Mediboost</div>
-              <div className="text-2xl font-bold text-gray-400">Bambuu</div>
-              <div className="text-2xl font-bold text-gray-400">Beacon</div>
-              <div className="text-2xl font-bold text-gray-400">Lightcyde</div>
-              <div className="text-2xl font-bold text-gray-400">Strativ</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Urgency Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20">
-        <div className="container mx-auto text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <div className="h-2 w-2 bg-red-500 rounded-full animate-pulse"></div>
-              Limited Time Offer
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Get <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">50% OFF</span> Your First 3 Months
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Join 2,000+ agencies who've already transformed their business. This offer expires in 7 days.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/signup">
-                <Button size="lg" className="text-lg px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                  Claim 50% Discount
-                  <ArrowRight className="ml-2 h-5 w-5" />
+              <h3 className="text-xl font-bold text-stone-900 mb-3">Analytics</h3>
+              <p className="text-stone-500 mb-5 leading-relaxed">
+                Real-time performance tracking with custom reports, ROI metrics, and exportable data.
+              </p>
+              <Link to="/dashboard">
+                <Button variant="outline" className="border-stone-300 text-stone-700 hover:bg-stone-100 transition-all duration-200">
+                  View Analytics
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white hover:shadow-lg hover:shadow-red-500/25 transition-all duration-300 font-semibold">
-                See Pricing
-              </Button>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-              *Offer valid for new customers only. Cannot be combined with other offers.
-            </p>
+
+            {/* Large Card - Feed Manager + Auto Optimization */}
+            <div className="md:col-span-2 bg-gradient-to-br from-teal-700 to-teal-900 rounded-2xl p-8 card-hover group text-white relative overflow-hidden">
+              {/* Decorative circle */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-teal-600/30 rounded-full blur-2xl" />
+              <div className="relative z-10 flex flex-col lg:flex-row gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center">
+                      <Rss className="h-6 w-6 text-white" />
+                    </div>
+                    <div className="h-12 w-12 rounded-xl bg-white/10 flex items-center justify-center">
+                      <Zap className="h-6 w-6 text-amber-300" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Feed Manager + Auto Optimization</h3>
+                  <p className="text-teal-100 mb-5 leading-relaxed">
+                    Automated product feed crawling paired with AI-driven campaign optimization. Set it up once,
+                    let the system maximize your ROAS continuously.
+                  </p>
+                  <div className="grid grid-cols-2 gap-2 mb-6">
+                    {['Automated crawling', 'Smart bidding', 'Feed exports', 'ROI maximization'].map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 text-sm text-teal-100">
+                        <CheckCircle className="h-4 w-4 text-amber-300 flex-shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/dashboard/feeds">
+                    <Button className="bg-white text-teal-800 hover:bg-stone-100 transition-all duration-200">
+                      Manage Feeds
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      {/* ── Features Section (Alternating Panels) ── */}
+      <section id="features" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Scalable Pricing</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Add unlimited users to every project. Request a custom plan based on the amount of websites and keywords. 
-              Global Ads Launch grows with your agency, not against it.
+            <p className="text-sm font-semibold text-teal-700 uppercase tracking-wider mb-3">Features</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 tracking-tight">
+              Built for agencies that refuse to settle
+            </h2>
+            <p className="text-lg text-stone-500 max-w-2xl mx-auto">
+              Every feature designed to help you retain clients, scale operations, and outperform competitors.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="p-6">
-              <CardHeader>
-                <CardTitle>Agency Starter</CardTitle>
-                <CardDescription>Perfect for small agencies</CardDescription>
-                <div className="text-3xl font-bold">$199<span className="text-lg text-gray-500">/month</span></div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li>✓ Up to 10 websites</li>
-                  <li>✓ Unlimited users</li>
-                  <li>✓ Website crawler</li>
-                  <li>✓ SEO analysis tools</li>
-                  <li>✓ Basic reporting</li>
-                  <li>✓ Email support</li>
-                </ul>
-                <Link to="/signup">
-                  <Button className="w-full mt-6">Start Free Trial</Button>
-                </Link>
-              </CardContent>
-            </Card>
 
-            <Card className="p-6 border-2 border-blue-600 relative">
-              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">Most Popular</Badge>
-              <CardHeader>
-                <CardTitle>Agency Professional</CardTitle>
-                <CardDescription>For growing agencies</CardDescription>
-                <div className="text-3xl font-bold">$499<span className="text-lg text-gray-500">/month</span></div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li>✓ Up to 50 websites</li>
-                  <li>✓ Unlimited users</li>
-                  <li>✓ All SEO tools</li>
-                  <li>✓ Advanced analytics</li>
-                  <li>✓ White label reports</li>
-                  <li>✓ Priority support</li>
-                  <li>✓ API access</li>
-                </ul>
-                <Link to="/signup">
-                  <Button className="w-full mt-6">Start Free Trial</Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardHeader>
-                <CardTitle>Agency Enterprise</CardTitle>
-                <CardDescription>For large agencies</CardDescription>
-                <div className="text-3xl font-bold">Custom<span className="text-lg text-gray-500"> pricing</span></div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li>✓ Unlimited websites</li>
-                  <li>✓ Unlimited users</li>
-                  <li>✓ All features included</li>
-                  <li>✓ Custom integrations</li>
-                  <li>✓ Dedicated support</li>
-                  <li>✓ Custom reporting</li>
-                  <li>✓ SLA guarantee</li>
-                </ul>
-                <Button className="w-full mt-6" variant="outline">
-                  Contact Sales
-                </Button>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Globe, title: 'Multi-Platform Support', desc: 'Google Ads, Microsoft Ads, and YouTube Ads integration with a unified dashboard', color: 'bg-teal-50 text-teal-700' },
+              { icon: Target, title: 'Smart Campaign Launch', desc: 'Automated campaign setup with AI-powered keyword generation and budget optimization', color: 'bg-amber-50 text-amber-700' },
+              { icon: BarChart3, title: 'Advanced Analytics', desc: 'Real-time reporting with ROAS tracking, conversion analysis, and performance insights', color: 'bg-emerald-50 text-emerald-700' },
+              { icon: Zap, title: 'Auto Optimization', desc: 'Intelligent rules for pausing poor performers, scaling winners, and managing negative keywords', color: 'bg-orange-50 text-orange-700' },
+              { icon: Shield, title: 'Enterprise Security', desc: 'OAuth integration, role-based access, and secure API connections with audit trails', color: 'bg-stone-100 text-stone-700' },
+              { icon: Users, title: 'B2B Audience Wizard', desc: 'Custom audience targeting with tailored campaign strategies for B2B markets', color: 'bg-teal-50 text-teal-700' },
+            ].map((feature, i) => (
+              <div key={i} className="p-6 rounded-2xl border border-stone-200 card-hover group bg-white">
+                <div className={`h-12 w-12 rounded-xl ${feature.color.split(' ')[0]} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className={`h-6 w-6 ${feature.color.split(' ')[1]}`} />
+                </div>
+                <h3 className="text-lg font-semibold text-stone-900 mb-2">{feature.title}</h3>
+                <p className="text-stone-500 text-sm leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Ready to Impress Your Clients?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Join 1000+ agencies already using Global Ads Launch to deliver proactive alerts and actionable reports 
-            that keep their clients happy and their business growing.
+      {/* ── Testimonials Section ── */}
+      <section id="testimonials" className="py-20 px-4 bg-stone-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-teal-700 uppercase tracking-wider mb-3">What Agencies Say</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 tracking-tight">
+              Join 1,000+ teams monitoring websites
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "We monitor all important metrics in one dashboard and prioritize SEO fixes using only one tool. It saves a lot of time for analyzing and testing new hypotheses. The email alerts feature is invaluable.",
+                name: 'Herman Krabbendam',
+                role: 'Owner, Vuurwerk Agency',
+                initials: 'HK',
+                accent: 'bg-teal-50 text-teal-700',
+              },
+              {
+                quote: "Our SEO workflow has changed a lot. We tried many tools but none helped with technical SEO, which provides the foundation for all content to rank well. This platform changed that completely.",
+                name: 'Lorenz Graf',
+                role: 'Head of SEO, LightCyde Agency',
+                initials: 'LG',
+                accent: 'bg-amber-50 text-amber-700',
+              },
+              {
+                quote: "When I begin discovery for a new client, the first thing I do is run AdVantage on their site and connect Search Console and Analytics to get a baseline picture.",
+                name: 'Sandra West',
+                role: 'CEO, Bellastrega',
+                initials: 'SW',
+                accent: 'bg-emerald-50 text-emerald-700',
+              },
+            ].map((testimonial, i) => (
+              <Card key={i} className="p-6 border-stone-200 card-hover bg-white">
+                <CardContent className="p-0">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-stone-600 mb-6 leading-relaxed text-sm">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className={`h-10 w-10 rounded-full ${testimonial.accent.split(' ')[0]} flex items-center justify-center`}>
+                      <span className={`font-bold text-sm ${testimonial.accent.split(' ')[1]}`}>{testimonial.initials}</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-stone-900 text-sm">{testimonial.name}</div>
+                      <div className="text-xs text-stone-500">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Rating summary */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-2 bg-white rounded-full px-5 py-2.5 border border-stone-200 shadow-sm">
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span className="text-sm font-medium text-stone-700">4.6/5 from 353 reviews</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Pricing Section ── */}
+      <section id="pricing" className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-teal-700 uppercase tracking-wider mb-3">Pricing</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 tracking-tight">
+              Simple, scalable pricing
+            </h2>
+            <p className="text-lg text-stone-500 max-w-2xl mx-auto">
+              Unlimited users on every plan. Request a custom plan based on your website and keyword count.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+            {/* Starter */}
+            <div className="bg-white rounded-2xl p-8 border border-stone-200 card-hover">
+              <h3 className="text-lg font-semibold text-stone-900 mb-1">Agency Starter</h3>
+              <p className="text-sm text-stone-500 mb-6">Perfect for small agencies</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-stone-900">$199</span>
+                <span className="text-stone-500">/month</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-sm text-stone-600">
+                {['Up to 10 websites', 'Unlimited users', 'Website crawler', 'SEO analysis tools', 'Basic reporting', 'Email support'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-teal-600 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link to="/signup">
+                <Button variant="outline" className="w-full border-stone-300 text-stone-700 hover:bg-stone-100 transition-all duration-200">
+                  Start Free Trial
+                </Button>
+              </Link>
+            </div>
+
+            {/* Professional - Featured */}
+            <div className="bg-teal-700 rounded-2xl p-8 text-white card-hover relative -mt-2 shadow-xl shadow-teal-700/20">
+              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white border-0 px-4 py-1">
+                Most Popular
+              </Badge>
+              <h3 className="text-lg font-semibold mb-1">Agency Professional</h3>
+              <p className="text-teal-200 text-sm mb-6">For growing agencies</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$499</span>
+                <span className="text-teal-200">/month</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-sm text-teal-100">
+                {['Up to 50 websites', 'Unlimited users', 'All SEO tools', 'Advanced analytics', 'White label reports', 'Priority support', 'API access'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-amber-300 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link to="/signup">
+                <Button className="w-full bg-white text-teal-800 hover:bg-stone-100 transition-all duration-200">
+                  Start Free Trial
+                </Button>
+              </Link>
+            </div>
+
+            {/* Enterprise */}
+            <div className="bg-white rounded-2xl p-8 border border-stone-200 card-hover">
+              <h3 className="text-lg font-semibold text-stone-900 mb-1">Agency Enterprise</h3>
+              <p className="text-sm text-stone-500 mb-6">For large agencies</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-stone-900">Custom</span>
+                <span className="text-stone-500"> pricing</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-sm text-stone-600">
+                {['Unlimited websites', 'Unlimited users', 'All features included', 'Custom integrations', 'Dedicated support', 'Custom reporting', 'SLA guarantee'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-teal-600 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button variant="outline" className="w-full border-stone-300 text-stone-700 hover:bg-stone-100 transition-all duration-200">
+                Contact Sales
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA Section ── */}
+      <section className="py-20 px-4 bg-stone-900 relative overflow-hidden">
+        {/* Decorative shapes */}
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-teal-800/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-amber-800/10 rounded-full blur-3xl" />
+
+        <div className="container mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight">Ready to impress your clients?</h2>
+          <p className="text-lg text-stone-400 mb-10 max-w-2xl mx-auto">
+            Join 1,000+ agencies already using AdVantage to deliver proactive alerts
+            and actionable reports that keep clients engaged and revenue growing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/signup">
-              <Button size="lg" className="text-lg px-8 py-6 bg-white text-blue-600 hover:bg-gray-100">
-                Start 14-day Free Trial
+              <Button size="lg" className="text-base px-8 py-5 bg-teal-600 hover:bg-teal-500 text-white shadow-lg shadow-teal-600/25 transition-all duration-300">
+                Start 14-Day Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-2 border-white text-blue-300 hover:bg-white hover:text-blue-600 hover:shadow-lg hover:shadow-white/25 transition-all duration-300 font-semibold">
-              Book Demo with Team
+            <Button variant="outline" size="lg" className="text-base px-8 py-5 border-stone-600 text-stone-300 hover:bg-stone-800 hover:text-white transition-all duration-300">
+              Book a Demo
             </Button>
           </div>
-          <div className="mt-8 text-blue-100">
-            <p className="text-sm">No credit card required • Cancel anytime • 14-day free trial</p>
-          </div>
+          <p className="text-sm text-stone-500 mt-6">
+            No credit card required. Cancel anytime.
+          </p>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-4">
+      {/* ── Footer ── */}
+      <footer className="bg-stone-900 text-white pt-16 pb-8 px-4 border-t border-stone-800">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">GA</span>
+                <div className="h-8 w-8 rounded-lg bg-teal-700 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">Av</span>
                 </div>
-                <span className="text-xl font-bold">Global Ads Launch</span>
+                <span className="text-lg font-bold">AdVantage</span>
               </div>
-              <p className="text-gray-400 mb-6 max-w-md">
-                SEO & AI visibility control center for agencies. Impress your customers with proactive alerts 
-                and actionable reports, generated at the intersection of Search Console, GA4, AI overviews 
-                rankings and site content updates.
+              <p className="text-stone-400 mb-6 max-w-sm text-sm leading-relaxed">
+                SEO & AI visibility control center for agencies. Proactive alerts and actionable
+                reports at the intersection of Search Console, GA4, and AI overview rankings.
               </p>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <span className="ml-2 text-sm text-gray-400">4.6/5 (353 reviews)</span>
-                </div>
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+                <span className="ml-2 text-sm text-stone-400">4.6/5 (353 reviews)</span>
               </div>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Core Tools</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#tools" className="hover:text-white transition-colors">Website Crawler</a></li>
-                <li><a href="#tools" className="hover:text-white transition-colors">SEO Analysis</a></li>
-                <li><a href="#tools" className="hover:text-white transition-colors">Rank Tracker</a></li>
-                <li><a href="#tools" className="hover:text-white transition-colors">Analytics Dashboard</a></li>
-                <li><a href="#tools" className="hover:text-white transition-colors">Feed Manager</a></li>
+              <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-stone-300">Core Tools</h3>
+              <ul className="space-y-2.5 text-stone-400 text-sm">
+                <li><a href="#tools" className="hover:text-white transition-colors duration-200">Website Crawler</a></li>
+                <li><a href="#tools" className="hover:text-white transition-colors duration-200">SEO Analysis</a></li>
+                <li><a href="#tools" className="hover:text-white transition-colors duration-200">Rank Tracker</a></li>
+                <li><a href="#tools" className="hover:text-white transition-colors duration-200">Analytics Dashboard</a></li>
+                <li><a href="#tools" className="hover:text-white transition-colors duration-200">Feed Manager</a></li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#pricing" className="hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#testimonials" className="hover:text-white transition-colors">Case Studies</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-stone-300">Company</h3>
+              <ul className="space-y-2.5 text-stone-400 text-sm">
+                <li><a href="#features" className="hover:text-white transition-colors duration-200">Features</a></li>
+                <li><a href="#pricing" className="hover:text-white transition-colors duration-200">Pricing</a></li>
+                <li><a href="#testimonials" className="hover:text-white transition-colors duration-200">Case Studies</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">About Us</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">Contact</a></li>
               </ul>
             </div>
-            
+
             <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Product Updates</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API Reference</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Status Page</a></li>
+              <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-stone-300">Resources</h3>
+              <ul className="space-y-2.5 text-stone-400 text-sm">
+                <li><a href="#" className="hover:text-white transition-colors duration-200">Help Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">API Reference</a></li>
+                <li><a href="#" className="hover:text-white transition-colors duration-200">Status Page</a></li>
               </ul>
             </div>
           </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8">
+
+          <div className="border-t border-stone-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-gray-400 text-sm">
-                <p>&copy; 2024 Global Ads Launch. All rights reserved.</p>
-                <p className="mt-1">Global Ads Launch is owned and operated by Global Ads Launch Limited</p>
-              </div>
-              <div className="flex items-center gap-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
-                <a href="#" className="hover:text-white transition-colors">Privacy Notice</a>
-                <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+              <p className="text-stone-500 text-sm">
+                &copy; 2024 AdVantage. All rights reserved.
+              </p>
+              <div className="flex items-center gap-6 text-sm text-stone-500">
+                <a href="#" className="hover:text-white transition-colors duration-200">Terms</a>
+                <a href="#" className="hover:text-white transition-colors duration-200">Privacy</a>
+                <a href="#" className="hover:text-white transition-colors duration-200">Cookies</a>
               </div>
             </div>
           </div>
@@ -782,4 +681,3 @@ export default function HomePage() {
     </div>
   )
 }
-

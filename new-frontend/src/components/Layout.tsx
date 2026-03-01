@@ -16,10 +16,6 @@ import {
   ChevronDown,
 } from 'lucide-react'
 
-/**
- * Dashboard layout component
- * Provides horizontal navigation tabs and topbar for dashboard pages
- */
 export default function Layout({
   children,
 }: {
@@ -27,9 +23,7 @@ export default function Layout({
 }) {
   const { user, logout } = useAuth()
   const location = useLocation()
-  /**
-   * Grouped navigation for dropdown
-   */
+
   const groupedNavigation = {
     'Marketing': [
       { name: 'Campaigns', href: '/dashboard/campaigns', icon: Megaphone },
@@ -48,66 +42,64 @@ export default function Layout({
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-stone-50">
         {/* Top Navigation Bar */}
-        <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-white shadow-sm border-b border-stone-200">
           <div className="px-4 sm:px-6 lg:px-8">
-            {/* Top row with logo and user info */}
+            {/* Top row */}
             <div className="flex items-center justify-between h-12 sm:h-14">
               <div className="flex items-center">
-                <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-xs sm:text-sm">G</span>
+                <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg bg-teal-700 flex items-center justify-center">
+                  <span className="text-white font-bold text-xs sm:text-sm">Av</span>
                 </div>
-                <span className="ml-2 text-base sm:text-lg font-bold text-gray-900 dark:text-white">
-                  Global Ads
+                <span className="ml-2 text-base sm:text-lg font-bold text-stone-900 tracking-tight">
+                  AdVantage
                 </span>
               </div>
 
               {/* Right side actions */}
               <div className="flex items-center space-x-2 sm:space-x-4">
-                {/* Notifications */}
-                <Button variant="ghost" size="icon" className="relative h-8 w-8 sm:h-10 sm:w-10">
+                <Button variant="ghost" size="icon" className="relative h-8 w-8 sm:h-9 sm:w-9 text-stone-500 hover:text-stone-700 hover:bg-stone-100">
                   <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
-                  <span className="absolute -top-1 -right-1 h-2 w-2 sm:h-3 sm:w-3 bg-red-500 rounded-full"></span>
+                  <span className="absolute -top-0.5 -right-0.5 h-2 w-2 sm:h-2.5 sm:w-2.5 bg-amber-500 rounded-full"></span>
                 </Button>
 
-                {/* User menu */}
                 <DropdownMenu.Root>
                   <DropdownMenu.Trigger asChild>
-                    <Button variant="ghost" className="flex items-center space-x-1 sm:space-x-2 h-8 sm:h-10">
-                      <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                    <Button variant="ghost" className="flex items-center space-x-1 sm:space-x-2 h-8 sm:h-9 hover:bg-stone-100">
+                      <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-teal-700 flex items-center justify-center">
                         <span className="text-white text-xs sm:text-sm font-medium">
                           {user?.firstName?.charAt(0) || 'U'}
                         </span>
                       </div>
                       <div className="hidden sm:block text-left">
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">
+                        <p className="text-sm font-medium text-stone-900">
                           {user?.firstName} {user?.lastName}
                         </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
+                        <p className="text-xs text-stone-500">
                           {user?.email}
                         </p>
                       </div>
-                      <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+                      <ChevronDown className="h-3 w-3 sm:h-4 sm:w-4 text-stone-400" />
                     </Button>
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Portal>
                     <DropdownMenu.Content
-                      className="min-w-[200px] bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-2 z-50"
+                      className="min-w-[200px] bg-white rounded-xl shadow-lg border border-stone-200 p-1.5 z-50 animate-scale-in"
                       align="end"
                       sideOffset={5}
                     >
-                      <DropdownMenu.Item className="flex items-center px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
+                      <DropdownMenu.Item className="flex items-center px-3 py-2 text-sm text-stone-700 hover:bg-stone-100 rounded-lg cursor-pointer transition-colors duration-150">
+                        <User className="mr-2 h-4 w-4 text-stone-400" />
                         Profile
                       </DropdownMenu.Item>
-                      <DropdownMenu.Item className="flex items-center px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md cursor-pointer">
-                        <Settings className="mr-2 h-4 w-4" />
+                      <DropdownMenu.Item className="flex items-center px-3 py-2 text-sm text-stone-700 hover:bg-stone-100 rounded-lg cursor-pointer transition-colors duration-150">
+                        <Settings className="mr-2 h-4 w-4 text-stone-400" />
                         Settings
                       </DropdownMenu.Item>
-                      <DropdownMenu.Separator className="h-px bg-gray-200 dark:bg-gray-700 my-1" />
-                      <DropdownMenu.Item 
-                        className="flex items-center px-3 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-md cursor-pointer"
+                      <DropdownMenu.Separator className="h-px bg-stone-100 my-1" />
+                      <DropdownMenu.Item
+                        className="flex items-center px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg cursor-pointer transition-colors duration-150"
                         onClick={logout}
                       >
                         <LogOut className="mr-2 h-4 w-4" />
@@ -119,59 +111,62 @@ export default function Layout({
               </div>
             </div>
 
-            {/* Navigation tabs - Responsive */}
-            <div className="flex items-center space-x-1 sm:space-x-2 border-t border-gray-200 dark:border-gray-700 py-2 overflow-x-auto">
-              {/* Overview - Always visible */}
+            {/* Navigation tabs */}
+            <div className="flex items-center space-x-1 sm:space-x-2 border-t border-stone-100 py-2 overflow-x-auto">
               <Link
                 to="/dashboard"
-                className={`flex items-center px-3 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                className={`flex items-center px-3 sm:px-5 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
                   location.pathname === '/dashboard'
-                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 shadow-sm'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
+                    ? 'bg-teal-50 text-teal-700 shadow-sm'
+                    : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'
                 }`}
               >
                 <BarChart3
-                  className={`mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 ${
+                  className={`mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 ${
                     location.pathname === '/dashboard'
-                      ? 'text-blue-500 dark:text-blue-400'
-                      : 'text-gray-400'
+                      ? 'text-teal-600'
+                      : 'text-stone-400'
                   }`}
                 />
                 <span className="hidden xs:inline">Overview</span>
               </Link>
 
-              {/* Grouped Navigation with Dropdowns */}
               {Object.entries(groupedNavigation).map(([groupName, items]) => (
                 <DropdownMenu.Root key={groupName}>
                   <DropdownMenu.Trigger asChild>
                     <Button
                       variant="ghost"
-                      className="flex items-center px-3 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white rounded-lg transition-all duration-200 whitespace-nowrap"
+                      className="flex items-center px-3 sm:px-5 py-2 text-xs sm:text-sm font-medium text-stone-600 hover:bg-stone-100 hover:text-stone-900 rounded-lg transition-all duration-200 whitespace-nowrap"
                     >
                       <span className="flex items-center">
-                        {groupName === 'Marketing' && <Megaphone className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />}
-                        {groupName === 'Analytics' && <Search className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />}
-                        {groupName === 'Account' && <Settings className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />}
+                        {groupName === 'Marketing' && <Megaphone className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-stone-400" />}
+                        {groupName === 'Analytics' && <Search className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-stone-400" />}
+                        {groupName === 'Account' && <Settings className="mr-1 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-stone-400" />}
                         <span className="hidden xs:inline">{groupName}</span>
                       </span>
-                      <ChevronDown className="ml-1 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+                      <ChevronDown className="ml-1 h-3 w-3 sm:h-3.5 sm:w-3.5 text-stone-400" />
                     </Button>
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Portal>
                     <DropdownMenu.Content
-                      className="min-w-[200px] bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-2 z-50"
+                      className="min-w-[200px] bg-white rounded-xl shadow-lg border border-stone-200 p-1.5 z-50 animate-scale-in"
                       align="start"
                       sideOffset={5}
                     >
                       {items.map((item) => {
                         const Icon = item.icon
+                        const isActive = location.pathname === item.href
                         return (
                           <DropdownMenu.Item key={item.href} asChild>
                             <Link
                               to={item.href}
-                              className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 rounded-md"
+                              className={`flex items-center px-3 py-2 text-sm rounded-lg transition-colors duration-150 ${
+                                isActive
+                                  ? 'bg-teal-50 text-teal-700'
+                                  : 'text-stone-700 hover:bg-stone-100'
+                              }`}
                             >
-                              <Icon className="mr-2 h-4 w-4 text-gray-400" />
+                              <Icon className={`mr-2 h-4 w-4 ${isActive ? 'text-teal-600' : 'text-stone-400'}`} />
                               {item.name}
                             </Link>
                           </DropdownMenu.Item>
@@ -185,12 +180,11 @@ export default function Layout({
           </div>
         </div>
 
-        {/* Main content - Responsive padding */}
-        <main className="p-4 sm:p-6 lg:p-8 xl:p-10">
+        {/* Main content */}
+        <main className="p-4 sm:p-6 lg:p-8 xl:p-10 animate-fade-in-up">
           {children}
         </main>
       </div>
     </ProtectedRoute>
   )
 }
-

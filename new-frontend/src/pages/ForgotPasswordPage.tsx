@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth, ForgotPasswordRequest } from '@/contexts/AuthContext'
+import { useAuth } from '@/contexts/AuthContext'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -8,72 +8,36 @@ import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Loader2, ArrowLeft, CheckCircle } from 'lucide-react'
 
-/**
- * Forgot password page component
- * Handles password reset request with email validation
- */
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-
   const { forgotPassword, isLoading } = useAuth()
 
-  /**
-   * Validate email format
-   */
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+  const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-  /**
-   * Handle form submission
-   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Clear previous errors
     setError('')
-
-    // Validate email
-    if (!email) {
-      setError('Email is required')
-      return
-    }
-
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address')
-      return
-    }
-
+    if (!email) { setError('Email is required'); return }
+    if (!validateEmail(email)) { setError('Please enter a valid email address'); return }
     try {
       setIsSubmitting(true)
       await forgotPassword({ email })
       setIsSubmitted(true)
     } catch (error) {
-      // Error is handled by the auth context, but we can also show it here
       console.error('Forgot password error:', error)
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  /**
-   * Handle email input change
-   */
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
-    // Clear error when user starts typing
-    if (error) {
-      setError('')
-    }
+    if (error) setError('')
   }
 
-  /**
-   * Handle resend email
-   */
   const handleResend = () => {
     setIsSubmitted(false)
     setEmail('')
@@ -81,59 +45,39 @@ export default function ForgotPasswordPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          {/* Success State */}
+      <div className="min-h-screen flex items-center justify-center bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md w-full space-y-8 animate-fade-in-up">
           <div className="text-center">
             <div className="flex justify-center">
-              <div className="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
-                <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
+              <div className="h-12 w-12 rounded-full bg-emerald-50 flex items-center justify-center">
+                <CheckCircle className="h-6 w-6 text-emerald-600" />
               </div>
             </div>
-            <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
-              Check your email
-            </h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <h2 className="mt-6 text-2xl font-bold text-stone-900">Check your email</h2>
+            <p className="mt-2 text-sm text-stone-500">
               We've sent a password reset link to{' '}
-              <span className="font-medium text-gray-900 dark:text-white">{email}</span>
+              <span className="font-medium text-stone-900">{email}</span>
             </p>
           </div>
 
-          <Card>
+          <Card className="border-stone-200 shadow-sm">
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div className="text-center">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                    Next steps
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  <h3 className="text-base font-medium text-stone-900">Next steps</h3>
+                  <p className="mt-2 text-sm text-stone-500">
                     1. Check your email inbox (and spam folder)<br />
                     2. Click the reset link in the email<br />
                     3. Create a new password
                   </p>
                 </div>
-
                 <div className="space-y-3">
-                  <Button
-                    onClick={handleResend}
-                    variant="outline"
-                    className="w-full"
-                    disabled={isSubmitting || isLoading}
-                  >
-                    {isSubmitting || isLoading ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      'Resend email'
-                    )}
+                  <Button onClick={handleResend} variant="outline" className="w-full border-stone-300 text-stone-700 hover:bg-stone-100" disabled={isSubmitting || isLoading}>
+                    {isSubmitting || isLoading ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending...</>) : 'Resend email'}
                   </Button>
-
                   <Link to="/signin">
-                    <Button variant="ghost" className="w-full">
-                      <ArrowLeft className="mr-2 h-4 w-4" />
-                      Back to sign in
+                    <Button variant="ghost" className="w-full text-stone-600 hover:text-stone-900">
+                      <ArrowLeft className="mr-2 h-4 w-4" />Back to sign in
                     </Button>
                   </Link>
                 </div>
@@ -141,15 +85,9 @@ export default function ForgotPasswordPage() {
             </CardContent>
           </Card>
 
-          {/* Help Text */}
-          <div className="text-center text-xs text-gray-500 dark:text-gray-400">
+          <div className="text-center text-xs text-stone-400">
             Didn't receive the email? Check your spam folder or{' '}
-            <button
-              onClick={handleResend}
-              className="text-blue-600 hover:text-blue-500 font-medium"
-            >
-              try again
-            </button>
+            <button onClick={handleResend} className="text-teal-700 hover:text-teal-600 font-medium">try again</button>
           </div>
         </div>
       </div>
@@ -157,93 +95,43 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        {/* Header */}
+    <div className="min-h-screen flex items-center justify-center bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 animate-fade-in-up">
         <div className="text-center">
           <div className="flex justify-center">
-            <div className="h-12 w-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-              <span className="text-white font-bold text-xl">G</span>
+            <div className="h-11 w-11 rounded-lg bg-teal-700 flex items-center justify-center">
+              <span className="text-white font-bold text-lg">Av</span>
             </div>
           </div>
-          <h2 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
-            Forgot your password?
-          </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            No worries, we'll send you reset instructions.
-          </p>
+          <h2 className="mt-6 text-2xl font-bold text-stone-900">Forgot your password?</h2>
+          <p className="mt-2 text-sm text-stone-500">No worries, we'll send you reset instructions.</p>
         </div>
 
-        {/* Forgot Password Form */}
-        <Card>
+        <Card className="border-stone-200 shadow-sm">
           <CardHeader>
-            <CardTitle>Reset your password</CardTitle>
-            <CardDescription>
-              Enter your email address and we'll send you a link to reset your password.
-            </CardDescription>
+            <CardTitle className="text-lg">Reset your password</CardTitle>
+            <CardDescription>Enter your email address and we'll send you a link to reset your password.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Email Field */}
-              <div className="space-y-2">
-                <Label htmlFor="email">Email address</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={handleEmailChange}
-                  className={error ? 'border-red-500' : ''}
-                  placeholder="Enter your email address"
-                />
-                {error && (
-                  <Alert variant="destructive">
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                )}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-1.5">
+                <Label htmlFor="email" className="text-stone-700">Email address</Label>
+                <Input id="email" name="email" type="email" autoComplete="email" required value={email} onChange={handleEmailChange} className={`${error ? 'border-red-400' : 'border-stone-300'} focus:ring-teal-500`} placeholder="Enter your email address" />
+                {error && <Alert variant="destructive"><AlertDescription>{error}</AlertDescription></Alert>}
               </div>
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isSubmitting || isLoading}
-              >
-                {isSubmitting || isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Sending reset link...
-                  </>
-                ) : (
-                  'Send reset link'
-                )}
+              <Button type="submit" className="w-full bg-teal-700 hover:bg-teal-800 text-white transition-all duration-200" disabled={isSubmitting || isLoading}>
+                {isSubmitting || isLoading ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending reset link...</>) : 'Send reset link'}
               </Button>
             </form>
           </CardContent>
         </Card>
 
-        {/* Back to Sign In */}
         <div className="text-center">
-          <Link
-            to="/signin"
-            className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
-          >
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back to sign in
-          </Link>
-        </div>
-
-        {/* Help Text */}
-        <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-          Remember your password?{' '}
-          <Link to="/signin" className="text-blue-600 hover:text-blue-500">
-            Sign in here
+          <Link to="/signin" className="inline-flex items-center text-sm font-medium text-teal-700 hover:text-teal-600 transition-colors duration-200">
+            <ArrowLeft className="mr-1 h-4 w-4" />Back to sign in
           </Link>
         </div>
       </div>
     </div>
   )
 }
-
