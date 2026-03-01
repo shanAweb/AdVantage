@@ -1,4 +1,4 @@
-# Global Ads Launch & Optimization SaaS
+# AdVantage
 
 A production-ready SaaS application for managing and optimizing global advertising campaigns across Google Ads, Microsoft Ads, and YouTube Ads platforms.
 
